@@ -4,7 +4,6 @@ let pokemonRepository = (function () {
     {Name: 'Charmander', height: 0.6, type: ['fire']},
     {Name: 'Blastoise', height: 1.6, type: ['water']}
     ];
-}
 
 function getAll() {
     return pokemonRepository;
@@ -30,7 +29,7 @@ function addListItem(pokemon){
 }
 
 function showDetails(pokemon){
-    document.write(pokemon) ;
+    console.log(pokemon) ;
 }
 
 return {
