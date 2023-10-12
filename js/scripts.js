@@ -1,13 +1,41 @@
-let pokemonList = [
+let pokemonRepository = (function ()) {
+    let repository = [
     {Name: 'Bulbasaur', height: 0.7, type: ['grass', ' poison']}, 
     {Name: 'Charmander', height: 0.6, type: ['fire']},
     {Name: 'Blastoise', height: 1.6, type: ['water']}
-]
+    ];
+}
 
-for (let i = 0; i < pokemonList.length; i++) {
-    if (pokemonList[i].height > 1.0){ //if pokemon's height is over 100cm also print 'Wow that's big
-    document.write(pokemonList[i].Name + ' (height: ' + pokemonList[i].height + ' m) - Wow, that\'s big!<br>');
-    }else {
-    document.write(pokemonList[i].Name + ' (height: ' + pokemonList[i].height + ' m)<br>');
+function getAll() {
+    return pokemonRepository;
+}
+
+function add(pokemon) {
+    if (typeof pokemon === 'object'){
+    repository.push(pokemon);
     }
+}
+
+function addListItem(pokemon){
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listpokemon = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('button-class');
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    button.addEventListener('click', function() {
+        showDetails(pokemon.name);
+    });
+}
+
+function showDetails(pokemon){
+    console.log(pokemon) ;
+}
+
+return {
+    getAll: getAll,
+    add: add,
+    showDetails: showDetails,
+    addListItem: addListItem,
 }
