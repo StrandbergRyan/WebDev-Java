@@ -1,12 +1,12 @@
 let pokemonRepository = (function () {
-    let repository = [
+    let pokemonArray = [
     {Name: 'Bulbasaur', height: 0.7, type: ['grass', ' poison']}, 
     {Name: 'Charmander', height: 0.6, type: ['fire']},
     {Name: 'Blastoise', height: 1.6, type: ['water']}
     ];
 
 function getAll() {
-    return pokemonRepository;
+    return pokemonArray;
 }
 
 function add(pokemon) {
@@ -19,7 +19,7 @@ function addListItem(pokemon){
     let pokemonList = document.querySelector('.pokemon-list');
     let listpokemon = document.createElement('li');
     let button = document.createElement('button');
-    button.innerText = pokemon.name;
+    button.innerText = pokemon.Name;
     button.classList.add('button-class');
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
