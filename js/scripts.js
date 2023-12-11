@@ -13,13 +13,8 @@ let pokemonRepository = (function () {
 
   // Local function that adds a pokemon object to the array variable pokemonList
   function add(pokemon) {
-    if ((typeof pokemon === 'object') && (Object.keys(pokemon)[0] === 'name') && (Object.keys(pokemon)[1] === 'height') && (Object.keys(pokemon)[2] === 'eggGroups')) {
       pokemonList.push(pokemon);
-    } else {
-      // document.write('<p>' + 'Only a pokemon object can be added to this Pokemon List' + '</p>');
-      alert('ALERT: Only a pokemon object can be added to the Pokemon List, there is currently an attempt to add an incorrect type to this list.');
     }
-  }
 
   // Local function that returns the pokemonList array variable
   function getAll() {
@@ -37,7 +32,7 @@ let pokemonRepository = (function () {
     // Creates a button variable (node) for our <button></button> tag in index.HTML
     let button = document.createElement('button');
     // Sets the button text to the pokemon's name
-    button.innerText = pokemon.Name;
+    button.innerText = pokemon.name;
     // Adds the class list-button to button for CSS styling access
     button.classList.add('list-button');
 
@@ -109,8 +104,8 @@ let pokemonRepository = (function () {
 // pokemonRepository.getAll() calls getAll function in IIFE to copy pokemonList onto pokemonRepository
 // .forEach iterates through pokemonRepository and executes .addListItem function for each index
 // Function printPokemon passed parameter pokemon, which is an object at each index of pokemonRepository
-pokemonRepository.getAll().forEach(function printPokemon(pokemon) {
-  // Calls function addListItem with parameter pokemon
-  // This calls for the addition of a button list item to ul pokemon list
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
